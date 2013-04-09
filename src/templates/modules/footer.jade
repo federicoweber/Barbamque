@@ -1,0 +1,22 @@
+footer.open
+script(src="app/js/libs/jquery.js")
+script(src="app/js/libs/html5shiv.js")
+script(src="app/js/libs/underscore.js")
+//- script(src="app/js/libs/backbone.js")
+//- script(src="app/js/libs/json2.js")
+//- script(src="app/js/libs/pantarhei.js")
+- if(develop == true)
+	script(src="app/js/main.js")
+- else if(develop == false)
+	script(src="app/js/main.js")
+
+	-if(project.analytics)
+		|<!-- Google Analytics -->
+		|<script>
+		|	var _gaq=[['_setAccount','#{project.analytics}'],['_trackPageview']];
+		|	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		|	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		|	s.parentNode.insertBefore(g,s)}(document,'script'));
+		|</script>
+|</body>
+|</html>

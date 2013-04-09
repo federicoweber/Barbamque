@@ -1,0 +1,43 @@
+@mixin transitionDelay($duration)
+	-webkit-transition-delay: #{$duration}ms
+	-moz-transition-delay: #{$duration}ms
+	-o-transition-delay: #{$duration}ms
+	transition-delay: #{$duration}ms
+
+@mixin easeOutCubic($duration, $property: all)
+	-webkit-transition: #{$property} #{$duration}ms cubic-bezier(0.215, 0.610, 0.355, 1.000) 
+	-moz-transition: #{$property} #{$duration}ms cubic-bezier(0.215, 0.610, 0.355, 1.000) 
+	-ms-transition: #{$property} #{$duration}ms cubic-bezier(0.215, 0.610, 0.355, 1.000) 
+	-o-transition: #{$property} #{$duration}ms cubic-bezier(0.215, 0.610, 0.355, 1.000) 
+	transition: #{$property} #{$duration}ms cubic-bezier(0.215, 0.610, 0.355, 1.000)
+
+@mixin easeInOutBack($duration, $property: all)
+	-webkit-transition: #{$property} #{$duration}ms cubic-bezier(0.680, -0.550, 0.265, 1.550) 
+	-moz-transition: #{$property} #{$duration}ms cubic-bezier(0.680, -0.550, 0.265, 1.550) 
+	-ms-transition: #{$property} #{$duration}ms cubic-bezier(0.680, -0.550, 0.265, 1.550) 
+	-o-transition: #{$property} #{$duration}ms cubic-bezier(0.680, -0.550, 0.265, 1.550) 
+	transition: #{$property} #{$duration}ms cubic-bezier(0.680, -0.550, 0.265, 1.550)
+
+@mixin easeOutQuad($duration, $property: all)
+	-webkit-transition: #{$property} #{$duration}ms cubic-bezier(0.250, 0.460, 0.450, 0.940) 
+	-moz-transition: #{$property} #{$duration}ms cubic-bezier(0.250, 0.460, 0.450, 0.940) 
+	-ms-transition: #{$property} #{$duration}ms cubic-bezier(0.250, 0.460, 0.450, 0.940) 
+	-o-transition: #{$property} #{$duration}ms cubic-bezier(0.250, 0.460, 0.450, 0.940) 
+	transition: #{$property} #{$duration}ms cubic-bezier(0.250, 0.460, 0.450, 0.940)
+
+@mixin easeinQuad($duration, $property: all)
+	-webkit-transition: #{$property} #{$duration}ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
+	-moz-transition: #{$property} #{$duration}ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
+	-ms-transition: #{$property} #{$duration}ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
+	-o-transition: #{$property} #{$duration}ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
+	transition: #{$property} #{$duration}ms cubic-bezier(0.550, 0.085, 0.680, 0.530)
+
+@mixin keyframes($name)
+	@-webkit-keyframes #{$name} 
+		@content
+	@-moz-keyframes #{$name} 
+		@content
+	@-ms-keyframes #{$name} 
+		@content
+	@keyframes #{$name} 
+		@content

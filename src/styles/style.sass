@@ -1,0 +1,41 @@
+.hidden
+	display: none !important
+
+// import compass mixins
+@import "compass"
+
+// import
+@import "static"
+@import "animations"
+@import "compass"
+
+// Font Face
+
+// Basic font & color style 
+html
+	max-width: 100%
+	overflow-x: hidden
+body
+	background: $bgColor
+	color: $fgColor
+	font-size: 14px
+	font-family: helveticaneue, helvetica, arial
+	-webkit-font-smoothing: antialiased
+	a, a:active, a:visited
+		text-decoration: none
+
+#wrapper
+	width: 100%
+	max-width: $maxWidth
+	margin: 0 auto
+	z-index: 1
+	@include easeOutQuad(450)
+
+@media screen and (max-width: $MID_BREAK)
+	body
+		font-size: 10px
+
+@media screen and (max-width: $MIN_BREAK)
+	body
+		font-size: 6px
+

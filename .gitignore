@@ -1,0 +1,13 @@
+*.scssc
+*.sassc
+*.sublime-project
+*.sublime-workspace
+.bower/
+.bash_history
+.cache/
+.sudo_as_admin_successful
+.vagrant/
+components
+node_modules
+temp
+dist
