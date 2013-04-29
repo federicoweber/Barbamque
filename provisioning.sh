@@ -33,11 +33,11 @@ gruntV=$(npm grunt-cli -v)
 
 # Install Dev Dependencies
 echo "Install Dev Dependecies"
-sudo npm install -d
+npm install -d
 
 # Install Componets
 echo "Install components"
-sudo bower install
+bower install
 
 # Print a resume of the installation
 $(tput setaf 0)

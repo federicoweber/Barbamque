@@ -7,7 +7,10 @@
     "grunt-contrib-coffee": "~0.6.6",
     "grunt-contrib-jade": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-clean": "~0.4.0"
+    "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-watch": "~0.3.1"
+  },
+  "dependencies": {
+    "grunt": "~0.4.1"
   }
 }

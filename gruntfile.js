@@ -10,8 +10,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	var data = require('./data');
-
 	var project = {
 		title: 'Barbamque',
 		author: 'vanGoGH',
@@ -30,27 +28,33 @@ module.exports = function(grunt) {
 	});
 	
 	// Declare files to copy
-	var filesToCopyDev = {
-			"temp/app/js/libs/modernizr.js": "components/modernizr/modernizr.js",
-			"temp/app/js/libs/html5shiv.js": "components/html5shiv-dist/html5shiv.js",
-			"temp/app/js/libs/jquery.js": "components/jquery/jquery.js",
-			"temp/app/js/libs/json2.js": "components/json2/json2.js",
-			"temp/app/js/libs/html5shiv-printshiv.js": "components/html5shiv-dist/html5shiv-printshiv.js",
-			"temp/app/js/libs/underscore.js": "components/underscore/underscore.js",
-			"temp/app/js/libs/backbone.js": "components/backbone/backbone.js",
-			"temp/app/js/libs/pantarhei.js": "components/pantarhei/PantaRhei.js",
-			"temp/app/js/libs/marionette.js": "components/marionette/lib/backbone.marionette.js",
-			"temp/app/js/libs/": "src/scripts/libs/**/*",
-			"temp/app/css/img/": "src/styles/img/**/*",
-			"temp/app/css/backgroundsize.min.htc": "src/styles/backgroundsize.min.htc",
-			"temp/app/img/": "src/img/**/*",
-			"temp/app/data/": "src/data/*",
-		};
+	var filesToCopyDev = [
+		{flatten: true, dest: "temp/app/js/libs/modernizr.js", src: "components/modernizr/modernizr.js"},
+		{flatten: true, dest: "temp/app/js/libs/html5shiv.js", src: "components/html5shiv-dist/html5shiv.js"},
+		{flatten: true, dest: "temp/app/js/libs/html5shiv-printshiv.js", src: "components/html5shiv-dist/html5shiv-printshiv.js"},
+		{flatten: true, dest: "temp/app/js/libs/jquery.js", src: "components/jquery/jquery.js"},
+		{flatten: true, dest: "temp/app/js/libs/json2.js", src: "components/json2/json2.js"},
+		{flatten: true, dest: "temp/app/js/libs/underscore.js", src: "components/underscore/underscore.js"},
+		{flatten: true, dest: "temp/app/js/libs/backbone.js", src: "components/backbone/backbone.js"},
+		{flatten: true, dest: "temp/app/js/libs/pantarhei.js", src: "components/pantarhei/PantaRhei.js"},
+		{flatten: true, expand: true, dest: "temp/app/js/libs/", src: "src/scripts/libs/**/*"},
+		{flatten: true, expand: true, dest: "temp/app/css/img/", src: "src/styles/img/*"},
+		{flatten: true, expand: true, dest: "temp/app/css/img/", src: "components/jquery.colorbox/example1/images/*"},
+		{flatten: true, expand: true, dest: "temp/app/fonts/", src: "src/fonts/*"},
+		{flatten: true, expand: true, dest: "temp/app/images/", src: "src/images/*"},
+		{flatten: true, dest: "temp/app/data/", src: "src/data/*"}
+	];
 
-	var filesToCopyDist = {}
-	for (var key in filesToCopyDev) {
-		filesToCopyDist[key.replace(/^temp/,'dist')] = filesToCopyDev[key]
-	};
+	var filesToCopyDist = []
+	filesToCopyDev.forEach(function(el){
+		el1 = {
+			flatten: el.flatten,
+			dest: el.dest.replace(/^temp/,'dist'),
+			src: el.src,
+			expand : el.expand != undefined ? true : false
+		}
+		filesToCopyDist.push(el1)
+	});
 
 	// Project configuration.
 	grunt.initConfig({
@@ -97,7 +101,6 @@ module.exports = function(grunt) {
 					pretty: true,
 					data: {
 						project: project,
-						data: data,
 						develop: true,
 						coffeeSourcesNames: coffeeSourcesNames,
 					}
@@ -111,7 +114,6 @@ module.exports = function(grunt) {
 					pretty: false,
 					data: {
 						project: project,
-						data: data,
 						develop: false,
 					}
 				},

@@ -2,12 +2,15 @@
 *.sassc
 *.sublime-project
 *.sublime-workspace
-.bower/
 .bash_history
+.bower/
 .cache/
 .sudo_as_admin_successful
 .vagrant/
-components
+.sass-cache
+.npm
+/components
+/tmp
 node_modules
 temp
 dist
