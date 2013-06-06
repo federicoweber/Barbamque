@@ -1,9 +1,13 @@
-include modules/head
-|<body>
-include modules/header
-#wrapper
-	block content
-		article
-			h1 Maserati
+doctype 5
+html(lang="it")
+	block head
+		include modules/head
+	body
+		block header
+			include modules/header
+		#wrapper
+			block content
+				article
+					h1 Maserati
 
-include modules/footer
+		include modules/footer
