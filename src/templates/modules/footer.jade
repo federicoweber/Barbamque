@@ -6,7 +6,8 @@ script(src="app/js/libs/underscore.js")
 //- script(src="app/js/libs/json2.js")
 //- script(src="app/js/libs/pantarhei.js")
 - if(develop == true)
-	script(src="app/js/main.js")
+		each el in coffeeSourcesNames
+			script(src="app/js/"+el+".js")
 - else if(develop == false)
 	script(src="app/js/main.js")
 
