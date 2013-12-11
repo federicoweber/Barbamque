@@ -10,13 +10,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	var project = {
-		title: 'Barbamque',
-		author: 'vanGoGH',
-		description: '',
-		version: '0.1.0',
-		analytics: false
-	};
+	var project = grunt.file.readJSON('package.json')
+	project.analytics = false
 
 	var coffeeSourcesNames = [
 		'main'
@@ -154,8 +149,36 @@ module.exports = function(grunt) {
 
 	});
 
+	// update version number in package json
+	grunt.registerTask('updateVersion', function(){
+		// this is used to check if a version number have been provided
+		var tag = grunt.option('tag')
+		if(tag){
+			var exec = require('child_process').exec
+			var package = grunt.file.readJSON('package.json');
+			var oldVersion = package.version;
+			package.version = tag
+			grunt.file.write('package.json', JSON.stringify(package, null, 4));
+			grunt.log.write('Version changed from: '+oldVersion+' to: '+tag+' … ').ok();
+			exec("git tag "+tag);
+		} else {
+			grunt.fail.warn('A version number is needed')
+		}
+		
+	});
+
+	// push the updates to the server
+	grunt.registerTask('appendBanner', function(){
+		var pkg = grunt.file.readJSON('package.json');
+		var banner = '/* '+pkg.title+' by: '+pkg.author+' — v.'+pkg.version+' — date:'+new Date()+'*/'
+		fs = require('fs')
+		fs.appendFileSync('dist/app/css/style.css', banner);
+		fs.appendFileSync('dist/app/js/main.js', banner);
+
+	});
 
 	// Default task.
 	grunt.registerTask('default', ['clean:temp','compass:dev','coffee:dev','jade:dev','copy:dev']);
-	grunt.registerTask('build', ['clean:dist','compass:dist','coffee:dist','jade:dist','copy:dist']);
+	grunt.registerTask('build', ['clean:dist','compass:dist','coffee:dist','jade:dist','copy:dist', 'appendBanner']);
+	grunt.registerTask('version', 'updateVersion');
 };
