@@ -57,7 +57,7 @@ Will output the production code — also unifying your *.coffee in one **main.js
 - turn it into a global CLI — distributed via npm — with the wollowing features:
 	- an init function to boostrap a new project
 	- a command wrapper for Bower, Grunt and Vagrant
-- add headless testing with [Phantom](http://phantomjs.org/) [Mocha](http://visionmedia.github.io/mocha/) and [Chai](http://chaijs.com/)
+- add headless testing with [Phantom](http://phantomjs.org/) [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/)
 
 ## Contributors
 
