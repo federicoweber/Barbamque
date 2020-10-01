@@ -37,7 +37,7 @@ Will output the production code — also unifying your *.coffee in one **main.js
 ### Tools
 - [Vagrant](http://www.vagrantup.com/)
 - [Grunt](http://gruntjs.com/)
-- [Bower](http://twitter.github.io/bower/)
+- [Bower](https://bower.io/)
 - [CoffeScript](http://coffeescript.org/)
 - [Sass](sass-lang.com)
 - [Compass](http://compass-style.org/)
